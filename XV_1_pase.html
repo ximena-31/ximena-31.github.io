@@ -1114,10 +1114,7 @@
                                                                     </span>
                                                                 </div>
                                                             </div>
-                                                            <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-invitados elementor-col-100 elementor-field-required">
-                                                                <label for="form-field-invitados" class="elementor-field-label">Nombre(s) de acompañante(s)							</label>
-                                                                <textarea class="elementor-field-textual elementor-field  elementor-size-sm" name="form_fields[invitados]" id="form-field-invitados" rows="4" placeholder="Nombre y apellido" required="required" aria-required="true" style="color: #6A1E1E;"></textarea>
-                                                            </div>
+                                                            
                                                             <div class="elementor-field-type-tel elementor-field-group elementor-column elementor-field-group-celular elementor-col-100">
                                                                 <label for="form-field-celular" class="elementor-field-label">Número de celular							</label>
                                                                 <input size="1" type="tel" name="form_fields[celular]" id="form-field-celular" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Para enviarte algún aviso de importancia. " style="color: #6A1E1E;" pattern="[0-9()#&amp;+*-=.]+" title="Only numbers and phone characters (#, -, *, etc) are accepted.">
@@ -1136,38 +1133,36 @@
                                         </div>
                                     </div>
                                     <script>
-                                        document.querySelector(".elementor-form").addEventListener("submit", function(event) {
-                                            event.preventDefault();
-                                            // Evita que el formulario se envíe de la manera convencional.
+document.querySelector(".elementor-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    // Evita que el formulario se envíe de la manera convencional.
 
-                                            // Obtén los valores de los campos del formulario.
-                                            const nombre = document.getElementById("form-field-nombre").value.trim();
-                                            const respuesta = document.querySelector("input[name='form_fields[respuesta]']:checked").value;
-                                            const invitados = document.getElementById("form-field-invitados").value.trim();
-                                            const celular = document.getElementById("form-field-celular").value.trim();
+    // Obtén los valores de los campos del formulario.
+    const nombre = document.getElementById("form-field-nombre").value.trim();
+    const respuesta = document.querySelector("input[name='form_fields[respuesta]']:checked").value;
+    const celular = document.getElementById("form-field-celular").value.trim();
 
-                                            // Verifica que los campos requeridos estén llenos.
-                                            if (!nombre || !respuesta || !invitados) {
-                                                alert("Por favor, completa todos los campos requeridos.");
-                                                return;
-                                            }
+    // Verifica que los campos requeridos estén llenos.
+    if (!nombre || !respuesta) {
+        alert("Por favor, completa todos los campos requeridos.");
+        return;
+    }
 
-                                            // Genera el mensaje para WhatsApp.
-                                            const mensaje = `Hola, aquí están los detalles de mi respuesta: 
+    // Genera el mensaje para WhatsApp.
+    const mensaje = `Hola, aquí están los detalles de mi respuesta: 
 - Nombre: ${nombre}
 - Respuesta: ${respuesta}
-- Acompañante(s): ${invitados}
 - Celular: ${celular ? celular : "No proporcionado"}`;
 
-                                            // Genera el enlace de WhatsApp.
-                                            const telefonoDestino = "525525490512";
-                                            // Reemplaza por el número al que deseas enviar el mensaje (incluyendo código de país).
-                                            const urlWhatsApp = `https://wa.me/${telefonoDestino}?text=${encodeURIComponent(mensaje)}`;
+    // Genera el enlace de WhatsApp.
+    const telefonoDestino = "525525490512"; 
+    const urlWhatsApp = `https://wa.me/${telefonoDestino}?text=${encodeURIComponent(mensaje)}`;
 
-                                            // Abre WhatsApp con el mensaje.
-                                            window.open(urlWhatsApp, "_blank");
-                                        });
-                                    </script>
+    // Abre WhatsApp con el mensaje.
+    window.open(urlWhatsApp, "_blank");
+});
+</script>
+
                                     <div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-e375424" data-id="e375424" data-element_type="column">
                                         <div class="elementor-widget-wrap"></div>
                                     </div>
